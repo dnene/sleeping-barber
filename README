@@ -1,0 +1,6 @@
+--------------------------------------------------------------------------------------------
+An erlang solution to the sleeping barber problem 
+See : 
+    http://en.wikipedia.org/wiki/Sleeping_barber_problem
+    http://www.bestinclass.dk/index.clj/2009/09/scala-vs-clojure-round-2-concurrency.html
+--------------------------------------------------------------------------------------------
