@@ -4,3 +4,7 @@ priv
 *.o
 *.beam
 *~
+erl_crash.dump
+sleeping_barber/rel/files/
+sleeping_barber/rel/sleeping_barber/
+

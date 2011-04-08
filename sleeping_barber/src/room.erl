@@ -2,20 +2,21 @@
 -author('Dhananjay Nene').
 -behaviour(gen_server).
 
--export([start/0, enter/1, get_next/0]).
+-export([start_link/0, enter/1, get_next/0]).
 -export([init/1, handle_call/3, handle_cast/2, 
 	 handle_info/2, terminate/2, code_change/3]).
 
 -define(ROOM_SIZE, 3).
 
-start() ->
-    gen_server:start_link({local,?MODULE}, ?MODULE, [], []).
+start_link() ->
+    gen_server:start_link(?MODULE, ?MODULE, [], []).
 enter(CustomerId) ->
     gen_server:cast(?MODULE, {customer,CustomerId}).
 get_next() ->
     gen_server:call(?MODULE, next).
 
 init([]) ->
+    io:format("Starting room~n"),
     {ok, queue:new()}.
 
 handle_cast({customer,CustomerId}, Queue) ->    
@@ -24,6 +25,8 @@ handle_cast({customer,CustomerId}, Queue) ->
 	L >= ?ROOM_SIZE ->
 	    io:format("turning away customer                ~p~n",
 		     [CustomerId]),
+	    %% error_logger:info_msg("turning away customer                ~p~n",
+	    %% 	     [CustomerId]),
 	    {noreply, Queue};
 	true ->
 	    io:format("seating customer in the waiting room ~p~n",
