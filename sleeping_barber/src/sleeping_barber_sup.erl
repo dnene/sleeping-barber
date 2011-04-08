@@ -43,14 +43,14 @@ init([]) ->
     RoomSpec = 
 	{'room',
 	 {'room',start_link,[] },
-	 permanent,2000,worker,['room']
+	 transient,2000,worker,['room']
 	},
     BarberSpec = 
 	{'barber',
 	 {'barber',start_link,[] },
-	 permanent,2000,worker,['barber']
+	 transient,2000,worker,['barber']
 	},
-    {ok,{{one_for_one,0,1}, [RoomSpec,BarberSpec]}}.
+    {ok,{{one_for_one,5,60}, [RoomSpec,BarberSpec]}}.
 
 %%====================================================================
 %% Internal functions

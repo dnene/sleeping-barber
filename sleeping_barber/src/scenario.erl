@@ -9,7 +9,7 @@ run_scenario() ->
 send(N,N) ->
     ok;
 send(M,N) ->
-    gen_server:cast({global, 'room'}, {customer,M}),
+    gen_server:cast(room, {customer,M}),
     io:format("Sending customer ~p~n",[M]),
     timer:sleep(100 + random:uniform(99)),
     send(M+1,N).

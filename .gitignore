@@ -3,6 +3,7 @@ deps
 priv
 *.o
 *.beam
+*.swp
 *~
 erl_crash.dump
 sleeping_barber/rel/files/

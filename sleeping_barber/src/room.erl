@@ -9,7 +9,7 @@
 -define(ROOM_SIZE, 3).
 
 start_link() ->
-    gen_server:start_link(?MODULE, ?MODULE, [], []).
+    gen_server:start_link({local,?MODULE}, ?MODULE, [], []).
 enter(CustomerId) ->
     gen_server:cast(?MODULE, {customer,CustomerId}).
 get_next() ->

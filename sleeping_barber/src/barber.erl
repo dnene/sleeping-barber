@@ -9,7 +9,8 @@
 -define(ROOM_SIZE, 3).
 
 start_link() ->
-    gen_server:start_link(?MODULE, ?MODULE, [], []).
+    gen_server:start_link({local,?MODULE}, ?MODULE, [], []).
+
 notify() ->
     gen_server:cast(?MODULE, notify).
 
